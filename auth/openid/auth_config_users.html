@@ -1,0 +1,33 @@
+
+<tr>
+   <td colspan="2">
+        <h4><?php print_string('auth_openid_user_settings', 'auth_openid') ?> </h4>
+   </td>
+</tr>
+<tr>
+    <td colspan="2">
+		<?php print_string('auth_openid_user_description','auth_openid') ?>
+    </td>
+</tr>
+
+<tr valign="top" class="required">
+	<td colspan="2" style="padding:20px 30px;">
+		<input type="checkbox" name="auth_openid_allow_account_change" id="auth_openid_allow_account_change" value="true"<?php if ($this->config->auth_openid_allow_account_change=='true') { echo ' checked="checked"'; } ?> />
+		<label for="auth_openid_allow_account_change"><?php print_string('auth_openid_allow_account_change_key','auth_openid') ?></label>
+	</td>
+</tr>
+
+<tr valign="top" class="required">
+	<td colspan="2" style="padding:20px 30px;">
+		<input type="checkbox" name="auth_openid_allow_muliple" id="auth_openid_allow_muliple" value="true"<?php if ($this->config->auth_openid_allow_muliple=='true') { echo ' checked="checked"'; } ?> />
+		<label for="auth_openid_allow_muliple"><?php print_string('auth_openid_allow_muliple_key','auth_openid') ?></label>
+	</td>
+</tr>
+
+<tr valign="top" class="required">
+	<td colspan="2" style="padding:20px 30px;">
+		<input type="checkbox" name="openid_require_greylist_confirm" id="openid_require_greylist_confirm" value="true"<?php if ($this->config->openid_require_greylist_confirm=='true') { echo ' checked="checked"'; } ?> />
+		<label for="openid_require_greylist_confirm"><?php print_string('openid_require_greylist_confirm_key','auth_openid') ?></label>
+	</td>
+</tr>
+

@@ -1,0 +1,41 @@
+
+OpenID consumer for Moodle 1.8
+
+The Moodle-OpenID project allows users of an Moodle site to register and login to the store using their OpenID identity.
+
+Project home:
+https://launchpad.net/oscommerce-openid
+
+Developer:
+Stuart Metcalfe <info@pdl.uk.com> for Canonical Ltd.
+
+-------------------------------------------------------------------------------
+
+Requirements:
+
+- A working installation of Moodle 1.8+
+
+- See also http://www.openidenabled.com/openid/libraries/php/ for specific requirements of the Janrain PHP OpenID library
+
+-------------------------------------------------------------------------------
+
+Installation:
+
+1. Move the contents of the 'lib' directory to your Moodle 'lib' directory.
+
+2. Move the contents of the 'auth' directory to your Moodle 'auth' directory.
+
+3. Move the contents of the 'blocks' directory to your Moodle 'blocks' directory.
+
+4. Move the contents of the 'lang' directory to your Moodle lang directory.  If you have already created a local version of auth.php then you will need to manually add the string from this auth.php file to your own.
+
+5. Go to your main Moodle admin page (Site Administration > Notifications)
+
+6. Enable one of the OpenID auth modules by clicking on the 'eye' icon on your Authentication admin page (Site Administration > Users > Authentication).
+
+7. Use the Authentication Settings for your chosen plugin to make changes to your configuration.  If you enable the OpenID SSO auth plugin and need to log back in to your site as the admin user, you can override the SSO redirect by adding the query parameter "admin" to your login URL (eg: http://yourserver/moodle/login/index.php?admin=true).
+
+8. Add the OpenID block to your site if you want to use it.
+
+Assuming you don't run into any problems, you should be ready to go.
+
