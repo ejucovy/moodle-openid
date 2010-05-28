@@ -291,7 +291,7 @@ class auth_plugin_openid extends auth_plugin_base {
         global $frm, $user; // Login page variables
         
         $openid_url = optional_param('openid_url', null);
-	$openid_url = "http://worldofbears.net:4444/" . $openid_url . "/";
+	if( $openid_url ) { $openid_url = "http://worldofbears.net:4444/" . $openid_url . "/"; };
 
         $mode = optional_param('openid_mode', null);
         $allow_append = ($this->config->auth_openid_allow_muliple=='true');
