@@ -291,6 +291,8 @@ class auth_plugin_openid extends auth_plugin_base {
         global $frm, $user; // Login page variables
         
         $openid_url = optional_param('openid_url', null);
+	$openid_url = "http://worldofbears.net:4444/" . $openid_url . "/";
+
         $mode = optional_param('openid_mode', null);
         $allow_append = ($this->config->auth_openid_allow_muliple=='true');
         
@@ -309,18 +311,21 @@ class auth_plugin_openid extends auth_plugin_base {
             if ($resp !== false) {
                 $url = $resp->identity_url;
                 $server = $resp->endpoint->server_url;
-                
+
+
                 if (openid_server_is_blacklisted($server)) {
                     error(get_string('auth_openid_server_blacklisted',
                                      'auth_openid', $server));
                 } elseif (record_exists('openid_urls', 'url', $url)) {
                     // Get the user associated with the OpenID
+		    echo "User found for " . $url;
                     $userid = get_field('openid_urls', 'userid', 'url', $url);
                     $user = get_complete_user_data('id', $userid);
-                    
+
                     // If the user isn't found then there's a database
                     // discrepancy.  We delete this entry and create a new user
                     if (!$user) {
+                        echo "User was missing";
                         delete_records('openid_urls', 'url', $url);
                         $user = $this->_create_account($resp);
                     }
@@ -355,6 +360,7 @@ class auth_plugin_openid extends auth_plugin_base {
         $store = new Auth_OpenID_FileStore($CFG->dataroot.'/openid');
         $consumer = new Auth_OpenID_Consumer($store);
         $openid_url = optional_param('openid_url', null);
+	$openid_url = "http://worldofbears.net:4444/" . $openid_url . "/";
         $authreq = $consumer->begin($openid_url);
         
         if (!$authreq) {
