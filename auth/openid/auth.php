@@ -287,6 +287,11 @@ class auth_plugin_openid extends auth_plugin_base {
      * the site's configuration value.
      */
     function loginpage_hook() {
+
+        // allow regular login form to be displayed if admin=true is appended to login URL
+        if( optional_param('admin', null) != null )
+	  return;
+
         global $CFG;
         global $frm, $user; // Login page variables
         
