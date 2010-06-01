@@ -296,7 +296,7 @@ class auth_plugin_openid extends auth_plugin_base {
         global $frm, $user; // Login page variables
         
         $openid_url = optional_param('openid_url', null);
-	if( $openid_url ) { $openid_url = "http://worldofbears.net:4444/" . $openid_url . "/"; };
+	if( $openid_url ) { $openid_url = "http://hotdog.ccnmtl.columbia.edu:4444/" . $openid_url . "/"; };
 
         $mode = optional_param('openid_mode', null);
         $allow_append = ($this->config->auth_openid_allow_muliple=='true');
@@ -365,7 +365,7 @@ class auth_plugin_openid extends auth_plugin_base {
         $store = new Auth_OpenID_FileStore($CFG->dataroot.'/openid');
         $consumer = new Auth_OpenID_Consumer($store);
         $openid_url = optional_param('openid_url', null);
-	$openid_url = "http://worldofbears.net:4444/" . $openid_url . "/";
+	$openid_url = "http://hotdog.ccnmtl.columbia.edu:4444/" . $openid_url . "/";
         $authreq = $consumer->begin($openid_url);
         
         if (!$authreq) {
@@ -593,6 +593,10 @@ class auth_plugin_openid extends auth_plugin_base {
             if (!empty($country_code)) {
                 $user->country = $country_code;
             }
+        }
+
+        if (isset($sreg['city']) && !empty($sreg['city'])) {	    
+            $user->city = $sreg['city'];
         }
         
         /* We're currently not attempting to get language and timezone values
